@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Min Finder App by Aparna</title>
+    <style>
+        *{font-size: 30px; background-color: bisque; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;}
+        .input{background-color:rgb(252, 244, 234);}
+        .btn{background-color:black; font-family: serif; color:white; border-radius: 5px;width:100px; margin-left: 20px;}
+            .btn:hover {color:brown; background-color: beige;}
+        h1{font-size: 40px; color: darkslategrey;}
+    </style>
+</head>
+<body>
+    <center>
+        <br>
+        <h1>Min Finder App</h1>
+        <br>
+        <form onsubmit = "find()">
+            <input type="number" step="any" placeholder="Enter first number" id="num1" class="input"/>
+            <br><br>
+            <input type="number" step="any" placeholder="Enter second number" id="num2" class="input"/>
+            <br><br>
+            <input type="submit" value="M1" class="btn" />
+            <input type="submit" value="M2" class="btn"/>
+            <input type="submit" value="M3" class="btn"/>
+            </form>
+            <br>
+            <h2 id="msg"></h2>
+            <script>
+                function find()
+                {
+                event.preventDefault();
+                let num1 = document.getElementById("num1");
+                let num2 = document.getElementById("num2");
+                let msg = document.getElementById("msg");
+
+                if(num1.value==""){
+                    alert("You did not enter first number");
+                    num1.focus();
+                    msg.innerHTML="";
+                    return;
+                }
+                if(num2.value==""){
+                    alert("You did not enter second number");
+                    num2.focus();
+                    msg.innerHTML="";
+                    return;
+                }
+                
+                let ele = document.activeElement.value;
+                let ans = "";
+                let n1 = parseFloat(num1.value);
+                let n2 = parseFloat(num2.value);
+
+                if (ele == "M1"){
+                    ans = n1 < n2 ? "min = "+n1 : "min = "+n2 ;
+                    msg.innerHTML="M1 --> " +ans;
+                }
+
+                else if( ele == "M2"){
+                    if(n1 < n2 )
+                        { ans = "min = "+n1 }
+                    else
+                        { ans = "min = "+n2 ; }
+                    msg.innerHTML="M2 --> " +ans;
+                }
+
+                else if( ele == "M3"){
+                    ans = "min = "+Math.min(n1,n2);
+                    msg.innerHTML="M3 --> "+ans;
+                }
+
+                }
+                
+            </script>
+    </center>
+</body>
+</html>
